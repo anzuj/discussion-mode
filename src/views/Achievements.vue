@@ -14,8 +14,8 @@
               <v-icon class="star" color="yellow">mdi-star</v-icon>
             </v-col>
 
-            <v-col cols="5" sm="3" align="center">
-              <v-img contain :src="require('../assets/images/trophy.png')" style="max-height:150px"></v-img>
+            <v-col cols="5" sm="3" align="center" >
+              <v-img class="bounceIn" contain :src="require('../assets/images/trophy.png')" style="max-height:150px"></v-img>
             </v-col>
 
             <v-col cols="1" class="mt-8" align="left">

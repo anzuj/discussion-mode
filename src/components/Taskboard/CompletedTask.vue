@@ -67,6 +67,16 @@ export default {
 </script>
 
 <style scoped>
+
+.boxHeader {
+  position: relative;
+  top: 12px;
+  left: 12px;
+  z-index: 30;
+  background-color: white;
+  padding: 0 4px;
+}
+
 .v-expansion-panel-header {
   background: #fbfff7;
 }

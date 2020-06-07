@@ -93,7 +93,7 @@
       </v-col>
 
       <!-- btns -->
-      <v-col style="max-width:40px"  v-if="mode ==='taskboard'">
+      <v-col style="max-width:40px" v-if="mode ==='taskboard'">
         <v-btn
           title="Mark task as completed"
           @click="closeTask(task.id)"
@@ -200,11 +200,12 @@ import { mapState } from "vuex";
 export default {
   name: "OpenTask",
   props: {
-  mode: String,
-  task: Object
-},
-  components: { 
-    AddComment:() => import('../AddComment') },
+    mode: String,
+    task: Object
+  },
+  components: {
+    AddComment: () => import("../AddComment")
+  },
   data: () => ({
     isExpanded: false, //expansion panel state
     dialog: false, //move up dialog
@@ -220,11 +221,11 @@ export default {
       adminTask.delegatedTo = this.selectedAdmin;
       adminTask.taskComments = this.task.taskComments;
       adminTask.escalateComment = {
-           comment: this.escalateComment,
+        comment: this.escalateComment,
         //hardcoded for now, should be logged-in user name
         commentBy: "Test User",
         time: new Date()
-      }
+      };
       //original FF +surveyQuestion info
       adminTask.originatedFrom = this.task.originatedFrom;
 
@@ -261,7 +262,7 @@ export default {
       set(value) {
         this.$store.dispatch("changePerson", [value, this.task.id]);
       }
-    },
+    }
   }
 };
 </script>
@@ -292,5 +293,4 @@ export default {
 .v-label {
   font-size: 0.9rem;
 }
-
 </style>

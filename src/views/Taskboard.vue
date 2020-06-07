@@ -2,11 +2,11 @@
   <div class="fade-in">
     <Snackbar :snackbar="snackbar" @snackchanged="snackbar = $event"/>
      <div class="text-center display-1 font-weight-light py-6">Taskboard</div>
-    <v-row>
+    <v-row justify="center">
 
      
       <!-- container row -->
-      <v-col class="pa-0 pa-sm-2">
+      <v-col class="pa-0 pa-sm-2" cols="12" lg="8" xl="6">
         <!-- OPEN TASKS -->
         <v-card class="openTasks">
           <v-toolbar dense color="grey lighten-5" class="elevation-1">

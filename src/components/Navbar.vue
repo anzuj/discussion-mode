@@ -52,7 +52,7 @@
           <v-list-item-icon>
             <v-icon>mdi-login-variant</v-icon>
           </v-list-item-icon>
-          <v-list-item-title>Help Carousel</v-list-item-title>
+          <v-list-item-title>Help</v-list-item-title>
         </v-list-item>
 
       </v-list>

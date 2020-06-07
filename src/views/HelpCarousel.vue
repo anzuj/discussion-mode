@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="display-1 font-weight-light py-6 text-center">How does Discussion Mode work?</div>
+    <div class="display-1 font-weight-light py-6">How does Discussion Mode work?</div>
 
 <div class="">
 

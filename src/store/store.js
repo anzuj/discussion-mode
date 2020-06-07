@@ -87,100 +87,34 @@ export const store = new Vuex.Store({
                 ]
             },
         ],
-        questions: [
+        tasks: [
             {
-                question: "Is your performance perceived and valued enough?",
-                theme: "Appreciation",
-                questionSetId: "",
-                order: 1,
-                comments: [0, 1, 2, 3]
-            },
-            {
-                question: "Is the team spirit right?",
-                theme: "Team",
-                questionSetId: "",
-                order: 2,
-                comments: [3, 4, 5]
-            },
-            {
-                question: "How well do we deal with organizational changes?",
-                theme: "Change",
-                questionSetId: "",
-                order: 3,
-                comments: [6, 7, 8]
-            },
-            {
-                question: "Does your supervisor offer you the support you need to do your job optimally?",
-                theme: "Support",
-                questionSetId: "",
-                order: 4,
-                comments: [9, 10]
-            }
+                originatedFrom: [
+                  {
+                    question: "Would you recommend our company as an employer?",
+                    questionComment:
+                      "At the moment, no. Scheduling is unfortunately quite chaotic, and it's not clear how vacations are currently scheduled",
+                    questionCommentFrom: "Maria Lamore"
+                  }
+                ],
+                title: "Open transparent scheduling",
+                delegatedTo: "Manila Luzon",
+                deadline: new Date("2020-08-16"),
+                taskComments: [
+                  {
+                    comment: "Oh, finally!",
+                    commentBy: "Nicholas Flamel",
+                    time: new Date("2020-05-01")
+                  },
+                  {
+                    comment: "How early will we be able to book vacations?",
+                    commentBy: "Katy Bell",
+                    time: new Date("2020-05-06")
+                  }
+                ],
+                status: "open"
+              },
         ],
-        feedforward: {
-            0: {
-                userName: "Bianca Del Rio",
-                commentText: "(Appreciation comment) Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-                isOpen: true
-            },
-            1: {
-                userName: "Manila Luzon",
-                commentText: "Do eiusmod tempor incididunt",
-                isOpen: true
-            },
-            2: {
-                userName: "Latrice Royale",
-                commentText: "Nullam pulvinar libero vel urna viverra suscipit. Etiam eu enim eu est efficitur maximus. Sed porttitor ac felis eu eleifend. Nulla sed mi in nisi molestie volutpat. Curabitur dapibus varius posuere. Maecenas et malesuada ex. Nam ac vulputate nisl.",
-                isOpen: true
-            },
-            3: {
-                userName: "Jane Doe",
-                commentText: "Nam ac vulputate nisl.",
-                status: "closedFF"
-            },
-            4: {
-                userName: "Latrice Royale",
-                commentText: "(Team comment) Nullam pulvinar libero vel urna viverra suscipit. Etiam eu enim eu est efficitur maximus. Sed porttitor ac felis eu eleifend. Nulla sed mi in nisi molestie volutpat. Curabitur dapibus varius posuere. Maecenas et malesuada ex. Nam ac vulputate nisl.",
-                isOpen: true
-            },
-            5: {
-                userName: "Alyssa Edwards",
-                commentText: "Do eiusmod tempor incididunt",
-                isOpen: true
-            },
-            6: {
-                userName: "Sharon Needles",
-                commentText: "Sed porttitor ac felis eu eleifend. Nulla sed mi in nisi molestie volutpat. Curabitur dapibus varius posuere. Maecenas et malesuada ex. Nam ac vulputate nisl.",
-                isOpen: true
-            },
-            7: {
-                userName: "Jinx Monsoon",
-                commentText: "(Change comment) Nullam pulvinar libero vel urna viverra suscipit. Etiam eu enim eu est efficitur maximus. Sed porttitor ac felis eu eleifend. Nulla sed mi in nisi molestie volutpat. Curabitur dapibus varius posuere. Maecenas et malesuada ex. Nam ac vulputate nisl.",
-                isOpen: true
-            },
-            8: {
-                userName: "Alaska Edwards",
-                commentText: "Do eiusmod tempor incididunt",
-                isOpen: true
-            },
-            9: {
-                userName: "Maria Ferrera",
-                commentText: "Sed porttitor ac felis eu eleifend. Nulla sed mi in nisi molestie volutpat. Curabitur dapibus varius posuere. Maecenas et malesuada ex. Nam ac vulputate nisl.",
-                isOpen: true
-            },
-            10: {
-                userName: "Maria Ferrera",
-                commentText: "(Support comment) Nullam pulvinar libero vel urna viverra suscipit. Etiam eu enim eu est efficitur maximus.",
-                isOpen: true
-            },
-            11: {
-                userName: "Latrice Royale",
-                commentText: "Do eiusmod tempor incididunt.Sed porttitor ac felis eu eleifend. Nulla sed mi in nisi molestie volutpat. Curabitur dapibus varius posuere. Maecenas et malesuada ex. Nam ac vulputate nisl",
-                isOpen: true
-            }
-        }
-        ,
-        tasks: [],
         escalatedTasks: [],
         achievementTasks: [
             {
@@ -192,7 +126,7 @@ export const store = new Vuex.Store({
                     questionCommentFrom: "Maria Lamore"
                   }
                 ],
-                title: "Justo id arcu vulputate commodo",
+                title: "Hire a wellness coach",
                 delegatedTo: "Manila Luzon",
                 deadline: new Date("2020-02-16"),
                 taskComments: [
@@ -218,7 +152,7 @@ export const store = new Vuex.Store({
                     questionCommentFrom: "Maria Lamore"
                   }
                 ],
-                title: "Eiusmod tempor incididunt id arcu vulputate",
+                title: "Delegate projects on subsidiary",
                 delegatedTo: "Latrice Royale",
                 deadline: new Date(),
                 taskComments: [
@@ -244,7 +178,7 @@ export const store = new Vuex.Store({
                     questionCommentFrom: "Maria Lamore"
                   }
                 ],
-                title: "Adipiscing elit, sed do eiusmod ipsum dolor",
+                title: "Build automated schedule editor",
                 delegatedTo: "Alyssa Edwards",
                 deadline: new Date(),
                 taskComments: [],
