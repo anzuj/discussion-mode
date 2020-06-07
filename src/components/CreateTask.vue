@@ -6,10 +6,26 @@
     </v-card-title>
 
     <v-container class="pt-0">
-      <!-- <v-form v-model="isFormValid"> -->
+      <v-form v-model="isFormValid">
       <v-text-field v-model="newTask.chosenTitle" label="Task title" :rules="[rules.required]"></v-text-field>
 
-      <v-row justify="space-between" no-gutters>
+       <!-- addComments -->
+      <v-card id="commentbox" outlined>
+        <v-textarea
+          v-model="newTask.chosenCommentText"
+          class="body-2"
+          solo
+          :rules="[rules.required]"
+          no-resize
+          flat
+          rows="2"
+          name="comment"
+          label="Add comment"
+        ></v-textarea>
+      </v-card>
+      <!-- /addComment -->
+
+      <v-row justify="space-between" no-gutters class="mt-3">
         <!-- date picker -->
         <v-col cols="12" sm="4">
           <v-menu
@@ -24,8 +40,9 @@
               <v-text-field
                 dense
                 title="Choose a due date"
-                :value="pickerdate | formatDate"
+                :value="displayDate"
                 label="Due by:"
+                placeholder="Choose due date"
                 prepend-icon="event"
                 :rules="[rules.required]"
                 readonly
@@ -51,31 +68,16 @@
         <!-- /person picker -->
       </v-row>
 
-      <!-- addComments -->
-      <v-card id="commentbox" outlined>
-        <v-textarea
-          v-model="newTask.chosenCommentText"
-          class="body-2"
-          solo
-          :rules="[rules.required, rules.counter]"
-          no-resize
-          flat
-          rows="2"
-          name="comment"
-          label="Add comment"
-        ></v-textarea>
-      </v-card>
-      <!-- /addComment -->
-      <!-- </v-form> -->
+     
+      </v-form>
       <v-container>
         <v-row class="mt-3">
-          <v-btn tile dark @click="closePanel" class="grey">Cancel</v-btn>
+          <v-btn dark @click="closePanel" class="grey lighten-1">Cancel</v-btn>
           <v-spacer></v-spacer>
-          <!-- <div v-show="!isFormValid" class="grey--text">Please fill out all fields</div> -->
+          <div v-show="!isFormValid" class="grey--text font-weight-light">Please fill out all fields</div>
           <v-spacer></v-spacer>
 
-          <!-- :disabled="!isFormValid" -->
-          <v-btn tile @click="saveTask" class="yellow darken-1 white--text">Save</v-btn>
+          <v-btn  @click="saveTask" :disabled="!isFormValid" class="yellow darken-1 white--text">Save</v-btn>
         </v-row>
       </v-container>
     </v-container>
@@ -90,7 +92,8 @@ export default {
   data: () => ({
     pickerdate: new Date().toISOString().substr(0, 10),
     pickermenu: false,
-    // isFormValid: false, (form validation disabled during development)
+    isFormValid: false,
+    isDateChosen: false,
     newTask: {
       chosenTitle: "",
       chosenDelegatedTo: "",
@@ -99,12 +102,20 @@ export default {
     // basic validation for task fields (disabled during development)
     rules: {
       required: value => !!value || "Required",
-      counter: value => value.length <= 4000 || "Max 4000 characters"
     }
   }),
   computed: {
-    ...mapState(["teamMembers", "tasks"])
+    ...mapState(["teamMembers", "tasks"]),
+       displayDate() {
+      return this.isDateChosen ? this.formatDate(this.pickerdate) : "";
+    }
   },
+    watch: {
+    pickerdate() {
+      this.isDateChosen = true;
+    }
+  },
+
   methods: {
     closePanel() {
       this.$emit("panelClosed", false);
@@ -148,14 +159,13 @@ export default {
       this.newTask.chosenCommentText = "";
       this.newTask.chosenTitle = "";
       this.newTask.chosenDelegatedTo = "";
-    }
-  },
-  filters: {
-    //turn cropped ISO str 2020-05-23 from date picker -> to LocaleDateStr, to display task deadline DD/MM before YYYY
+    },
+       //change date format for the GUI
     formatDate(value) {
       return new Date(value).toLocaleDateString();
     }
-  }
+  },
+
 };
 </script>
 

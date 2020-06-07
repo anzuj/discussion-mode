@@ -12,13 +12,14 @@ export default new Vuetify({
         themes: {
             light: {
                 // From teambaromerter
-                primary: '#842353',
-                lightpink: '#F7F3F5',
-                secondary: '#757575',
-                accent: '#2196F3',
+                primary: '#A6617D',
+                lightpink: '#FEFBFC',
+                secondary: '#A27B92',
+                accent: '#8278AF',
                 error: '#F44336',
                 info: '#FF9800',
-                success: '#8BC34A'        
+                success: '#8BC34A',
+                green: '#7BA287'        
               }
         },
     },

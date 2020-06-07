@@ -9,22 +9,20 @@ export const store = new Vuex.Store({
             {
                 question: "Is your performance perceived and valued enough?",
                 theme: "Appreciation",
-                questionSetId: "",
-                order: 1,
                 comments: [
                     {
-                        userName: "Bianca Del Rio",
-                        commentText: "(Appreciation comment) Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+                        userName: "Frank McAllister",
+                        commentText: "Yes, I'm getting lots of positive and constructive feedback from the new weekly meetings",
                         status: "openFF"
                     },
                     {
-                        userName: "Manila Luzon",
-                        commentText: "Do eiusmod tempor incididunt",
+                        userName: "Timothy Bern",
+                        commentText: "It's not explicitly clear, but I think so..?",
                         status: "openFF"
                     },
                     {
-                        userName: "Latrice Royale",
-                        commentText: "Nullam pulvinar libero vel urna viverra suscipit. Etiam eu enim eu est efficitur maximus. Sed porttitor ac felis eu eleifend. Nulla sed mi in nisi molestie volutpat. Curabitur dapibus varius posuere. Maecenas et malesuada ex. Nam ac vulputate nisl.",
+                        userName: "Lily Mansion",
+                        commentText: "There's been quite a lot of confusion about delegating tasks. Some things that were not supposed to be my responsibility ended up being my responsibility in the last quarter and it's been taken for granted. ",
                         status: "openFF"
                     },
                 ]
@@ -54,18 +52,18 @@ export const store = new Vuex.Store({
                 order: 3,
                 comments: [
                     {
-                        userName: "Jinx Monsoon",
-                        commentText: "(Change comment) Nullam pulvinar libero vel urna viverra suscipit. Etiam eu enim eu est efficitur maximus. Sed porttitor ac felis eu eleifend. Nulla sed mi in nisi molestie volutpat. Curabitur dapibus varius posuere. Maecenas et malesuada ex. Nam ac vulputate nisl.",
+                        userName: "Marco Leipzig",
+                        commentText: "I feel the \"startup\" family vibe we had last year is disappearing now that our volumes increase. The team feeling we used to have is not as strong anymore, since numbers seem more important than people. Perhaps some more recreational team events would be handy, or a better communication about how the management intends to cope with the extra work load.",
                         status: "openFF"
                     },
                     {
                         userName: "Alaska Edwards",
-                        commentText: "Do eiusmod tempor incididunt",
+                        commentText: "I was really impressed how quickly home office routine was established around Covid-19 peak.",
                         status: "openFF"
                     },
                     {
                         userName: "Maria Ferrera",
-                        commentText: "Sed porttitor ac felis eu eleifend. Nulla sed mi in nisi molestie volutpat. Curabitur dapibus varius posuere. Maecenas et malesuada ex. Nam ac vulputate nisl.",
+                        commentText: "Onboarding of customer support could perhaps cover a few more topics about the work flow. At the moment the amount of new people making \"basic\" mistakes affects productivity of existing members of staff",
                         status: "openFF"
                     },
                 ]
@@ -78,12 +76,12 @@ export const store = new Vuex.Store({
                 comments: [
                     {
                         userName: "Maria Ferrera",
-                        commentText: "(Support comment) Nullam pulvinar libero vel urna viverra suscipit. Etiam eu enim eu est efficitur maximus.",
+                        commentText: "Absolutely, Carlos is the best! It's not often you can consider your team lead your friend or someone you'd invite to your birthday party, but he definitely is one of those.",
                         status: "openFF"
                     },
                     {
                         userName: "Latrice Royale",
-                        commentText: "Do eiusmod tempor incididunt.Sed porttitor ac felis eu eleifend. Nulla sed mi in nisi molestie volutpat. Curabitur dapibus varius posuere. Maecenas et malesuada ex. Nam ac vulputate nisl",
+                        commentText: "My team lead does what she can with the resources that have been given to her. Some tools we work with are awfully outdated, but due to budget cuts there's nothing she directly can affect.",
                         status: "openFF"
                     }
                 ]

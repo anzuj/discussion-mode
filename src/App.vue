@@ -61,14 +61,36 @@ export default {
   font-family: "Roboto", sans-serif;
   /* background: rgb(200,129,155); */
   /* background: radial-gradient(circle, rgba(200,129,155,1) 0%, rgba(136,37,73,1) 100%); */
-background-image: linear-gradient(180deg, rgba(155,229,255,0) 0%, rgba(255,255,255,1) 80%),url("./assets/Background.png");
+background-image: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,1) 80%),url("./assets/images/bg.png");
 background-size: 6%;
 
 }
-    
+
+   .bg-pic{
+     position: fixed;
+     right: 0px;
+     top: -5px;
+   } 
 .v-btn:focus::before{
   background-color: rgba(138, 138, 218, 0.5);     
   border: 1px solid rgb(19, 76, 184);  
+}
+
+.fade-in {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 0.5s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 </style>
 

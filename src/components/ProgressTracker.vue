@@ -117,7 +117,7 @@ export default {
 
 
 .v-stepper__step__step .v-icon {
-  color: #a6ec7a !important;
+  color: #9fd67d !important;
 }
 
 .closedFeedforwards .v-card {

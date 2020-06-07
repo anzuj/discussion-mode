@@ -1,7 +1,10 @@
 <template>
-  <div>
+  <div class="fade-in">
     <Snackbar :snackbar="snackbar" @snackchanged="snackbar = $event"/>
+     <div class="text-center display-1 font-weight-light py-6">Taskboard</div>
     <v-row>
+
+     
       <!-- container row -->
       <v-col class="pa-0 pa-sm-2">
         <!-- OPEN TASKS -->
@@ -30,7 +33,7 @@
             <div
               v-if="openTasks.length===0 && userTasks.length===0"
               align="center"
-              class="ma-6 grey--text"
+              class="ma-6 grey--text font-weight-light"
             >
               No open tasks
               <br />
@@ -52,6 +55,14 @@
               :task="task"
               :key="`completed-${index}`"
             ></CompletedTask>
+
+                  <div
+              v-if="completedTasks.length===0"
+              align="center"
+              class="ma-5 grey--text font-weight-light"
+            >
+              No completed tasks
+            </div>
           </v-container>
         </v-card>
         <!-- /COMPLETED CARD -->

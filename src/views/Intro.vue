@@ -1,14 +1,14 @@
 <template>
-  <v-container>
+  <v-container class="fade-in">
     <v-row>
       <v-col align="center">
         <div class="display-1 font-weight-light py-6">Discussion intro</div>
 
         <v-img contain :src="require('../assets/images/discuss.png')" height="100px"></v-img>
-        <p class="mt-3 body-2">
+        <div class="my-3 font-weight-light">
           Based on the results we would recommend to discuss Feedforwards in the following order. Drag
           <v-icon small class="px-0">mdi-drag-vertical</v-icon>and drop to change order
-        </p>
+        </div>
 
 
         <draggable
@@ -19,7 +19,7 @@
           @end="drag = false"
         >
           <transition-group type="transition" :name="!drag ? 'flip-list' : null">
-            <v-card max-width="800" class="mb-1" v-for="element in surveyData" :key="element.theme" color="lightpink">
+            <v-card max-width="800" class="mb-1" v-for="element in surveyData" :key="element.theme" color="lightpink lighten-1">
               <v-row class="list-group-item" no-gutters>
                 <v-col class="d-none d-md-flex py-2 tinted" cols="3">
                   <v-icon>drag_indicator</v-icon>
@@ -78,10 +78,7 @@ export default {
 </script>
 
 <style>
-.blobs{
-  position: relative;
-  z-index: -10;
-}
+
 .flip-list-move {
   transition: transform 0.5s;
 }
@@ -100,11 +97,13 @@ export default {
 
 .tinted {
   text-transform: uppercase;
-  color: rgb(255, 255, 255);
+  font-weight: 600;
+  color: rgb(148, 94, 116);
   letter-spacing: 0.3px;
+  border-right: 1px rgb(223, 204, 204) solid;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  background: rgb(215,122,156);
-background: linear-gradient(90deg, rgb(124, 80, 96) 0%, rgb(167, 106, 128) 100%);
+  /* background: rgb(215,122,156);
+background: linear-gradient(90deg, rgb(190, 179, 183) 0%, rgb(151, 141, 145) 100%); */
 }
 </style>

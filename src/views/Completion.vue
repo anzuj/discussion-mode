@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="fade-in">
     <div class="text-center display-1 font-weight-light py-6">Well done!</div>
     
     <!-- not sure if nr of survey questions gives value -->
@@ -14,7 +14,7 @@
              <!-- item -->
    <v-col align="center">
         <div class="align-center">
-          <div class="statCircle" style="background-color: #71D6C4">{{tasks.length}}</div>
+          <div class="statCircle" style="background-color: #B4DDD8">{{tasks.length}}</div>
           <div class="font-weight-light pa-2">TASKS CREATED</div>
         </div>
       </v-col>
@@ -23,7 +23,7 @@
         <!-- item -->
           <v-col align="center">
         <div class="align-center">
-          <div class="statCircle" style="background-color: #86C6EB">{{closedFF}}</div>
+          <div class="statCircle" style="background-color: #B4CEDD">{{closedFF}}</div>
           <div class="font-weight-light pa-2">FEEDFORWARDS DISCUSSED</div>
         </div>
       </v-col>
@@ -40,7 +40,7 @@
     <!-- /sun -->
 
     <v-row justify="center">
-      <v-btn tile router to="/taskboard" large color="primary" class="mt-5">Go to taskboard</v-btn>
+      <v-btn router to="/taskboard" large color="primary" class="mt-5">Go to taskboard</v-btn>
     </v-row>
 
   </v-container>

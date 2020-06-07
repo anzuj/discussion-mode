@@ -5,7 +5,7 @@
         <v-card :class="{ createTask: showTask }">
           <v-container>
             <p class="body-2 grey--text font-weight-light mb-0 mt-1">{{feedforwardItem.userName}}:</p>
-            <p class="mb-1 mt-0">{{feedforwardItem.commentText }}</p>
+            <p class="mb-2 mt-0">{{feedforwardItem.commentText }}</p>
           </v-container>
         </v-card>
 
@@ -21,13 +21,14 @@
 
       <v-col style="max-width:40px">
 
-        <v-tooltip bottom color="green" open-delay="1000">
+  
+        <v-tooltip bottom light color="grey" open-delay="1000">
       <template v-slot:activator="{ on }">
           <v-btn
       v-on="on"
           aria-label="Mark Feedforward as discussed"
           @click="closeFF(surveyQuestion, feedforwardItem.userName, feedforwardItem.commentText)"
-          class="mb-1 ml-1 closeBtn"
+          class=" ml-1 mb-1 closeBtn"
           width="36px"
           v-ripple="{ class: 'success--text' }"
         >
@@ -37,9 +38,10 @@
       <span>Mark Feedforward as discussed</span>
     </v-tooltip>
      
- <v-tooltip bottom color="yellow darken-2" open-delay="1000">
+ <v-tooltip bottom color="grey" open-delay="1000">
       <template v-slot:activator="{ on }">
         <v-btn
+        :disabled="showTask"
         v-on="on"
           @click="showTask=!showTask"
           aria-label="Create a task from Feedforward"
@@ -52,7 +54,8 @@
          </template>
       <span>Create a task from Feedforward</span>
     </v-tooltip>
-      </v-col>
+    
+       </v-col>
     </v-row>
   </div>
 </template>
@@ -78,6 +81,7 @@ export default {
 </script>
 
 <style>
+
 .createTask {
   border-bottom-left-radius: 0px !important;
   border-bottom-right-radius: 0px !important;

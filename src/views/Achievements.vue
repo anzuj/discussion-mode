@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="fade-in">
     <div align="center" class="display-1 font-weight-light py-6">Achievements</div>
 
     <v-container class="trophycontainer pa-0">
