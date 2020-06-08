@@ -1,13 +1,14 @@
 <template>
   <nav>
-    <v-app-bar app clipped-left color="transparent" flat>
+    <v-app-bar app color="transparent" flat>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>{{title}}</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <!-- <v-toolbar-title class="text-uppercase">{{title}}</v-toolbar-title> -->
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" app clipped color="transparent" 
+    <v-navigation-drawer disable-resize-watcher v-model="drawer" app color="primary darken-2" 
 >
-      <v-list class="pt-3" dense>
+      <v-list dark class="pt-3" dense>
         
 
         <v-list-item router to="/taskboard">
@@ -84,11 +85,14 @@ export default {
 }
 .v-list-item__title {
   font-weight: 400 !important;
-  font-size: 0.9rem !important;
-  font-family: sans-serif;
-  color: rgb(107, 104, 104);
+  font-size: 1.1rem !important;
+  font-family: "Raleway", sans-serif;
+  color: rgb(255, 255, 255);
 }
 
+.v-list-item__icon i{
+  color: rgb(206, 169, 188) !important;
+}
 /* .v-list-item--active .v-list-item__title{
   color: blue !important;
 }

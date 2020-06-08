@@ -165,6 +165,10 @@ export default {
 
 <style>
 
+.v-tooltip{
+  color: black !important;
+}
+
 .question{
   font-size: 28px;
 }
