@@ -3,6 +3,9 @@
     <v-divider></v-divider>
     <v-card-title class="title">
       <v-icon color="yellow darken-1" class="mr-1">mdi-flag-variant</v-icon>Create task
+
+      <v-spacer></v-spacer>
+      <span class="caption"> <a>Unable to solve within team?</a></span>
     </v-card-title>
 
     <v-container class="pt-0">

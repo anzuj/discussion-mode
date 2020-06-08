@@ -42,14 +42,12 @@
 </template>
 
 <script>
-// import HelloWorld from '@/components/HelloWorld.vue'
-import draggable from "vuedraggable";
 export default {
   name: "",
   display: "Transitions",
   props: [""],
   components: {
-    draggable
+    draggable: () => import('vuedraggable')
   },
   data: () => ({
     drag: false

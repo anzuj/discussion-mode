@@ -1,5 +1,11 @@
 <template>
   <v-stepper-content class="px-0 px-sm-2 px-md-5 px-lg-12" :step="step">
+
+        <Snackbar :snackbar="FFClosedSnackbar" @snackchanged="FFClosedSnackbar = $event">
+      Feedforward closed
+    </Snackbar>
+
+
     <!-- <v-img class="questionpic" contain :src="require('../assets/images/discuss.png')" height="75px"></v-img> -->
 
     <!-- BACK btn + question + NEXT btn -->
@@ -137,13 +143,17 @@ import { mapGetters } from "vuex";
 
 export default {
   components: { 
+    Snackbar: () =>import('@/components/Taskboard/Snackbar'),
     OpenFeedforward: () => import('@/components/OpenFeedforward.vue'), 
     OpenTask: () =>import('@/components/Taskboard/OpenTask.vue')
     },
   name: "StepperContent",
   props: ["question", "step", "nextLabel"],
   data: () => ({
-    mode: "discussion"
+    mode: "discussion",
+    taskSnackbar: false,
+    FFOpenSnackbar: false,
+    FFClosedSnackbar: false,
   }),
   computed: {
     ...mapGetters(["getOpenFF", "getClosedFF", "getOpenTasks"])

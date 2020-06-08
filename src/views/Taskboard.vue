@@ -1,6 +1,12 @@
 <template>
   <div class="fade-in">
-    <Snackbar :snackbar="snackbar" @snackchanged="snackbar = $event"/>
+
+    <v-btn @click="show">Show</v-btn>
+               <Snackbar>
+
+    </Snackbar>
+
+
      <div class="text-center display-1 font-weight-light py-6">Taskboard</div>
     <v-row justify="center">
 
@@ -19,7 +25,7 @@
             <!-- open MY tasks -->
             <div v-if="userTasks.length>0">
               <v-card-text class="overline">My tasks</v-card-text>
-              <OpenTask @snackbar="showSnackbar" v-for="(task, index) in userTasks" :task="task" :mode="mode" :key="`my-${index}`"/>
+              <OpenTask v-for="task in userTasks" :task="task" :mode="mode" :key="task.id"/>
             </div>
             <!-- /open MY tasks -->
 
@@ -27,7 +33,7 @@
             <div v-if="openTasks.length">
               <v-card-text class="overline">Team tasks</v-card-text>
             </div>
-            <OpenTask @snackbar="showSnackbar" v-for="(task, index) in openTasks" :task="task" :mode="mode" :key="`open-${index}`"></OpenTask>
+            <OpenTask v-for="task in openTasks" :task="task" :mode="mode" :key="task.id"></OpenTask>
             <!-- /open TEAM tasks -->
 
             <div
@@ -83,12 +89,11 @@ export default {
     Snackbar: () =>import('@/components/Taskboard/Snackbar')
     },
   methods: {
-showSnackbar(){
-  this.snackbar=true;
-}
+    show(){
+       this.$store.dispatch("showSnack", true);
+    }
   },
   data: () => ({
-snackbar:false,
 mode:"taskboard"
   }),
   computed: {

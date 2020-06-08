@@ -96,98 +96,33 @@
       <v-col style="max-width:40px" v-if="mode ==='taskboard'">
         <v-btn
           title="Mark task as completed"
-          @click="closeTask(task.id)"
+          @click="closeTask"
           class="closeBtn mb-1 ml-1"
           width="36px"
           v-ripple="{ class: 'success--text' }"
         >
           <v-icon color="green">mdi-check</v-icon>
         </v-btn>
-
-        <v-dialog :fullscreen="$vuetify.breakpoint.xs" v-model="dialog" width="500">
+        
+           <v-tooltip bottom color="grey" open-delay="1000">
           <template v-slot:activator="{ on }">
             <v-btn
+            @click="dialog=true"
               v-show="isExpanded"
               v-on="on"
-              title="Move task up to admins"
+               aria-label="Move task up to admins"
               v-ripple="{ class: 'orange--text' }"
               class="moveUpBtn ml-1"
               width="36px"
             >
               <v-icon color="orange">mdi-account-arrow-right</v-icon>
             </v-btn>
-          </template>
+                  </template>
+          <span>Move task up to admins</span>
+        </v-tooltip>
+            <EscalateDialog :task="task" :dialog="dialog" @dialogStatus="dialog = $event"/>
 
-          <v-card>
-            <v-card-title class="headline white--text orange darken-1" primary-title>
-              <v-icon color="white" class="mr-2">mdi-account-arrow-right</v-icon>Move task up
-            </v-card-title>
-
-            <v-card-text>
-              <!-- task origin -->
-              <span class="boxHeader">Originated from:</span>
-
-              <v-card width="100%" outlined>
-                <v-card-text>
-                  <p class="mb-1 mt-0 black--text">{{task.originatedFrom[0].question}}</p>
-                  <p
-                    class="caption grey--text font-weight-light mb-0 mt-1"
-                  >{{task.originatedFrom[0].questionCommentFrom}}:</p>
-                  <p class="mb-1 mt-0">{{task.originatedFrom[0].questionComment}}</p>
-                </v-card-text>
-              </v-card>
-              <!-- /task origin -->
-              <!-- comments -->
-              <div v-show="task.taskComments.length>0">
-                <span class="boxHeader">Comments:</span>
-
-                <v-card width="100%" outlined>
-                  <v-container>
-                    <div v-for="(comment, k) in task.taskComments" :key="k">
-                      <div
-                        class="caption grey--text font-weight-light mt-1"
-                      >{{comment.commentBy}} [{{comment.time.toLocaleString()}}]:</div>
-                      <p class="body-2 mb-1 mt-0">{{comment.comment}}</p>
-                      <v-divider v-if="k + 1 < task.taskComments.length"></v-divider>
-                    </div>
-                  </v-container>
-                </v-card>
-              </div>
-              <!-- /comments -->
-              <!-- addcomment -->
-              <v-card outlined class="mt-1">
-                <v-textarea
-                  class="body-2"
-                  solo
-                  hide-details
-                  flat
-                  rows="3"
-                  name="comment"
-                  label="Add comment"
-                  v-model="escalateComment"
-                ></v-textarea>
-              </v-card>
-              <v-row class="mt-4" no-gutters>
-                <v-col cols="6">
-                  <v-select
-                    dense
-                    prepend-icon="account_circle"
-                    :items="admins"
-                    v-model="selectedAdmin"
-                    label="Move task up to:"
-                  ></v-select>
-                </v-col>
-              </v-row>
-            </v-card-text>
-
-            <v-card-actions class="px-6 pb-6">
-              <v-btn tile dark color="grey" @click="dialog=false">CANCEL</v-btn>
-              <v-spacer></v-spacer>
-
-              <v-btn tile color="primary" @click="escalateTask(task.id)">SAVE</v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
+  
       </v-col>
       <!-- btns-->
     </v-row>
@@ -199,47 +134,22 @@ import { mapState } from "vuex";
 
 export default {
   name: "OpenTask",
-  props: {
-    mode: String,
-    task: Object
-  },
+  props: ["task", "mode"],
   components: {
-    AddComment: () => import("../AddComment")
+    AddComment: () => import("../AddComment"),
+    EscalateDialog: () => import("../Taskboard/EscalateDialog"),
   },
   data: () => ({
     isExpanded: false, //expansion panel state
     dialog: false, //move up dialog
     pickermenu: false, //date picker visibility state
-    selectedAdmin: null,
-    escalateComment: null
+
   }),
   methods: {
-    escalateTask(taskId) {
-      let adminTask = {};
-      adminTask.id = taskId;
-      adminTask.title = this.task.title;
-      adminTask.delegatedTo = this.selectedAdmin;
-      adminTask.taskComments = this.task.taskComments;
-      adminTask.escalateComment = {
-        comment: this.escalateComment,
-        //hardcoded for now, should be logged-in user name
-        commentBy: "Test User",
-        time: new Date()
-      };
-      //original FF +surveyQuestion info
-      adminTask.originatedFrom = this.task.originatedFrom;
 
-      //add new task in Vuex escalatedTasks array
-      this.$store.dispatch("addEscalatedTask", adminTask);
-
-      //change originating task status to admin to remove it from Taskboard display (still remains in tasks[] store)
-      this.$store.dispatch("changeTask", ["admin", taskId]);
-
-      this.$emit("snackbar", true);
-      this.dialog = false;
-    },
-    closeTask(taskId) {
-      this.$store.dispatch("changeTask", ["closed", taskId]);
+    closeTask() {
+      this.$store.dispatch("changeTask", ["closed", this.task.id]);
+      this.$store.dispatch("showSnack", true);
     }
   },
   computed: {

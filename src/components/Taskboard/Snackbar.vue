@@ -5,28 +5,26 @@
           top
           absolute
           color="orange darken-1"
-        >Task moved up to administration</v-snackbar>
+        >
+        stuff
+        <!-- <slot></slot> -->
+        </v-snackbar>
 </template>
 
 <script>
+// import { mapState } from "vuex";
 export default {
     name: "",
     props: ["snackbar"],
-    components: {
-        
-    },
-    data: () => ({
-    }),
-    methods: {
-
-    },
     computed: {
+            // ...mapState(["snackStatus"]),
         snackVal: {
             get(){
-                return this.snackbar
+                return this.$store.state.snackBar.show
             },
             set(val){
-                this.$emit("snackchanged", val)
+                 this.$store.dispatch("showSnack", val);
+                // this.$emit("snackchanged", val)
             }
         }
     }

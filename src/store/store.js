@@ -5,6 +5,10 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
     state: {
+        snackBar: {
+            show: false,
+            mode: null
+        },
         surveyData: [
             {
                 question: "Is your performance perceived and valued enough?",
@@ -244,6 +248,12 @@ export const store = new Vuex.Store({
             let ff = currQuestion.comments.find(comment => comment.userName === user && comment.commentText === text);
             ff.status = newStatus;
         },
+        changeSnackStatus(state, newSnackStatus){
+            state.snackBar.show = newSnackStatus
+        },
+        changeSnackMode(state, newSnackMode){
+            state.snackBar.mode = newSnackMode
+        }
     },
 
     actions: {
@@ -267,7 +277,13 @@ export const store = new Vuex.Store({
         },
         addComment(context, [newComment, taskId]) {
             context.commit("addComment", [newComment, taskId])
-        }
+        },
+        showSnack(context, isSnackShown) {
+            context.commit("changeSnackStatus", isSnackShown)
+        },
+        snackMode(context, mode) {
+            context.commit("changeSnackMode", mode)
+        },
     },
 
     getters: {
