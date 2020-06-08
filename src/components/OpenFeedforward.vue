@@ -75,6 +75,7 @@ export default {
     },
     closeFF(question, user, text) {
       this.$store.dispatch("changeFF", [question, user, text, "closedFF"]);
+      this.$store.dispatch("showSnack", [true, "ffClosed"]);
     }
   }
 };

@@ -105,8 +105,7 @@ export default {
 
       //change originating task status to admin to remove it from Taskboard display (still remains in tasks[] store)
       this.$store.dispatch("changeTask", ["admin", this.task.id]);
-
-      this.$emit("snackbar", true);
+       this.$store.dispatch("showSnack", [true, "taskDelegated"]);
       this.closeDialog();
     },
     closeDialog() {

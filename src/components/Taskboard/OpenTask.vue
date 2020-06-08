@@ -149,7 +149,7 @@ export default {
 
     closeTask() {
       this.$store.dispatch("changeTask", ["closed", this.task.id]);
-      this.$store.dispatch("showSnack", true);
+      this.$store.dispatch("showSnack", [true, "taskClosed"]);
     }
   },
   computed: {

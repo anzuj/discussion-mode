@@ -1,12 +1,5 @@
 <template>
   <div class="fade-in">
-
-    <v-btn @click="show">Show</v-btn>
-               <Snackbar>
-
-    </Snackbar>
-
-
      <div class="text-center display-1 font-weight-light py-6">Taskboard</div>
     <v-row justify="center">
 
@@ -86,12 +79,9 @@ export default {
   components: { 
     OpenTask: () =>import('@/components/Taskboard/OpenTask'), 
     CompletedTask: () =>import('@/components/Taskboard/CompletedTask') , 
-    Snackbar: () =>import('@/components/Taskboard/Snackbar')
     },
   methods: {
-    show(){
-       this.$store.dispatch("showSnack", true);
-    }
+
   },
   data: () => ({
 mode:"taskboard"

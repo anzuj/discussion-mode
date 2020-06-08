@@ -1,11 +1,6 @@
 <template>
   <v-stepper-content class="px-0 px-sm-2 px-md-5 px-lg-12" :step="step">
 
-        <Snackbar :snackbar="FFClosedSnackbar" @snackchanged="FFClosedSnackbar = $event">
-      Feedforward closed
-    </Snackbar>
-
-
     <!-- <v-img class="questionpic" contain :src="require('../assets/images/discuss.png')" height="75px"></v-img> -->
 
     <!-- BACK btn + question + NEXT btn -->
@@ -17,10 +12,6 @@
          <!-- <div class="questionicon"><v-icon color="lightpink darken-1">mdi-comment-question-outline</v-icon></div> -->
    <div align="center"  class="question px-2">{{ question.question }}</div>
      
-
-
-    
-
 
       <v-btn depressed
         @click="$emit('next', 'true')"
@@ -143,7 +134,6 @@ import { mapGetters } from "vuex";
 
 export default {
   components: { 
-    Snackbar: () =>import('@/components/Taskboard/Snackbar'),
     OpenFeedforward: () => import('@/components/OpenFeedforward.vue'), 
     OpenTask: () =>import('@/components/Taskboard/OpenTask.vue')
     },
@@ -151,9 +141,6 @@ export default {
   props: ["question", "step", "nextLabel"],
   data: () => ({
     mode: "discussion",
-    taskSnackbar: false,
-    FFOpenSnackbar: false,
-    FFClosedSnackbar: false,
   }),
   computed: {
     ...mapGetters(["getOpenFF", "getClosedFF", "getOpenTasks"])
@@ -170,6 +157,7 @@ export default {
     },
     reopenFF(question, user, text) {
       this.$store.dispatch("changeFF", [question, user, text, "openFF"]);
+       this.$store.dispatch("showSnack", [true, "ffOpened"]);
     }
   }
 };

@@ -248,12 +248,11 @@ export const store = new Vuex.Store({
             let ff = currQuestion.comments.find(comment => comment.userName === user && comment.commentText === text);
             ff.status = newStatus;
         },
-        changeSnackStatus(state, newSnackStatus){
-            state.snackBar.show = newSnackStatus
+        changeSnackStatus(state, [newSnackStatus, newMode]){
+            state.snackBar.show = newSnackStatus;
+            state.snackBar.mode = newMode
         },
-        changeSnackMode(state, newSnackMode){
-            state.snackBar.mode = newSnackMode
-        }
+
     },
 
     actions: {
@@ -278,12 +277,10 @@ export const store = new Vuex.Store({
         addComment(context, [newComment, taskId]) {
             context.commit("addComment", [newComment, taskId])
         },
-        showSnack(context, isSnackShown) {
-            context.commit("changeSnackStatus", isSnackShown)
+        showSnack(context, [isSnackShown, mode]) {
+            context.commit("changeSnackStatus", [isSnackShown, mode])
         },
-        snackMode(context, mode) {
-            context.commit("changeSnackMode", mode)
-        },
+
     },
 
     getters: {

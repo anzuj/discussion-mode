@@ -1,5 +1,7 @@
 <template>
   <div>
+  
+
     <v-stepper v-model="e1" alt-labels class="elevation-0 px-0 px-sm-2">
       <template>
         <v-stepper-header>
@@ -38,7 +40,8 @@ import { mapState } from "vuex";
 import StepperContent from '@/components/StepperContent.vue'
 export default {
   components: { 
-    StepperContent
+    StepperContent,
+    
     },
   name: "ProgressTracker",
   props: [],

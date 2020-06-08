@@ -4,18 +4,45 @@
           :timeout="1500"
           top
           absolute
-          color="orange darken-1"
+          :color="snackbar[mode].color" 
         >
-        stuff
+        {{ snackbar[mode].text }}
         <!-- <slot></slot> -->
         </v-snackbar>
 </template>
 
 <script>
-// import { mapState } from "vuex";
 export default {
-    name: "",
-    props: ["snackbar"],
+      data: () => ({
+snackbar: 
+    {
+        ffClosed: {
+        text: "Feedforward closed",
+        color: "green"
+    },
+        ffOpened: {
+        text: "Feedforward reopened",
+        color: "grey"
+    },
+        ffEscalated: {
+        text: "Feedforward sent to review by management",
+        color: "orange"
+    },
+    taskClosed: {
+        text: "Task closed",
+        color: "green"
+    },
+        taskCreated: {
+        text: "Task created",
+        color: "yellow"
+    },
+       taskDelegated: {
+        text: "Task delegated to management",
+        color: "orange"
+    }
+    }
+
+  }),
     computed: {
             // ...mapState(["snackStatus"]),
         snackVal: {
@@ -23,11 +50,15 @@ export default {
                 return this.$store.state.snackBar.show
             },
             set(val){
-                 this.$store.dispatch("showSnack", val);
+                 this.$store.dispatch("showSnack", [val, this.mode]);
                 // this.$emit("snackchanged", val)
             }
-        }
-    }
+        },
+        mode(){
+             return this.$store.state.snackBar.mode
+        },
+    },
+  
 
 }
 </script>

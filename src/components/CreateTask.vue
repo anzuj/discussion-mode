@@ -5,8 +5,11 @@
       <v-icon color="yellow darken-1" class="mr-1">mdi-flag-variant</v-icon>Create task
 
       <v-spacer></v-spacer>
-      <span class="caption"> <a>Unable to solve within team?</a></span>
+      <span class="caption"> <a @click="dialog=true">Unable to solve within team?</a></span>
     </v-card-title>
+
+     <DiscussionEscalate :feedforwardItem="feedforwardItem"
+            :surveyQuestion="surveyQuestion" :dialog="dialog" @dialogStatus="dialog = $event" @escalated="closePanel"/>
 
     <v-container class="pt-0">
       <v-form v-model="isFormValid">
@@ -89,9 +92,12 @@
 import { mapState } from "vuex";
 export default {
   props: ["feedforwardItem", "surveyQuestion"],
-  components: {},
+  components: {
+     DiscussionEscalate: () => import("@/components/Taskboard/DiscussionEscalate"),
+  },
   data: () => ({
     pickerdate: new Date().toISOString().substr(0, 10),
+    dialog: false,
     pickermenu: false,
     isFormValid: false,
     isDateChosen: false,
@@ -154,6 +160,7 @@ export default {
         this.feedforwardItem.commentText,
         "taskedFF"
       ]);
+       this.$store.dispatch("showSnack", [true, "taskCreated"]);
       this.resetFields();
     },
     resetFields() {
