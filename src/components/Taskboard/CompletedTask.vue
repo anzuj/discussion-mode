@@ -3,11 +3,13 @@
     <v-col class="px-4">
       <v-expansion-panels hover popout>
         <v-expansion-panel>
-          <v-expansion-panel-header class="py-4">
-            <p class="text-truncate pa-0 ma-0">
-              <v-icon color="green" class="px-1">mdi-check</v-icon>
-              {{task.title}}
-            </p>
+          <v-expansion-panel-header>
+            <v-row align="center">
+              <v-col style="max-width:40px">
+                <v-icon color="green" class="pr-1 pl-2">mdi-check</v-icon>
+              </v-col>
+              <v-col>{{task.title}}</v-col>
+            </v-row>
           </v-expansion-panel-header>
 
           <v-expansion-panel-content>
@@ -62,12 +64,11 @@
 <script>
 export default {
   name: "CompletedTask",
-  props:["task"]
+  props: ["task"]
 };
 </script>
 
 <style scoped>
-
 .boxHeader {
   position: relative;
   top: 12px;
@@ -86,15 +87,16 @@ export default {
   transition: background 0.2s ease-in;
 }
 
-.v-expansion-panel, .v-expansion-panel-header, .v-expansion-panel--active {
+.v-expansion-panel,
+.v-expansion-panel-header,
+.v-expansion-panel--active {
   border-radius: 18px !important;
 }
 
-.v-expansion-panel-header--active, .v-expansion-panel-header--active:hover {
+.v-expansion-panel-header--active,
+.v-expansion-panel-header--active:hover {
   border-bottom-left-radius: 0px !important;
   border-bottom-right-radius: 0px !important;
   transition: border-radius 0.15s ease-in;
-} 
-
-
+}
 </style>

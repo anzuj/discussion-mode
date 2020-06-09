@@ -21,7 +21,6 @@
             v-model="newTask.chosenCommentText"
             class="body-2"
             solo
-            :rules="[rules.required]"
             no-resize
             flat
             rows="2"
@@ -50,7 +49,6 @@
                   label="Due by:"
                   placeholder="Choose due date"
                   prepend-icon="event"
-                  :rules="[rules.required]"
                   readonly
                   v-on="on"
                 ></v-text-field>
@@ -63,7 +61,6 @@
           <!-- person picker -->
           <v-col cols="12" sm="5">
             <v-select
-              :rules="[rules.required]"
               dense
               prepend-icon="account_circle"
               :items="teamMembers"
@@ -77,9 +74,9 @@
       <v-container>
         <v-row class="mt-3">
           <v-btn dark @click="closePanel" class="grey lighten-1">Cancel</v-btn>
-          <v-spacer></v-spacer>
-          <div v-show="!isFormValid" class="grey--text font-weight-light">Please fill out all fields</div>
-          <v-spacer></v-spacer>
+          <!-- <v-spacer></v-spacer>
+          <div v-show="!isFormValid" class="grey--text font-weight-light">Please fill out all fields</div>-->
+          <v-spacer></v-spacer> 
 
           <v-btn @click="saveTask" :disabled="!isFormValid" class="yellow darken-1 white--text">Save</v-btn>
         </v-row>
@@ -134,13 +131,20 @@ export default {
       task.title = this.newTask.chosenTitle;
       task.delegatedTo = this.newTask.chosenDelegatedTo;
       task.taskComments = [];
-      task.taskComments.push({
+
+      if(this.newTask.chosenCommentText){
+   task.taskComments.push({
         comment: this.newTask.chosenCommentText,
         //hardcoded for now, should be logged-in userName
         commentBy: "Test User",
         time: new Date()
       });
-      task.deadline = new Date(this.pickerdate);
+      }
+
+     this.isDateChosen ? task.deadline = new Date(this.pickerdate):task.deadline = ""
+      
+   
+    
       task.status = "open";
       //original FF +surveyQuestion info
       task.originatedFrom = [];

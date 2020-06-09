@@ -4,55 +4,17 @@
       <v-col cols="11">
         <v-expansion-panels hover popout>
           <v-expansion-panel>
-            <v-expansion-panel-header @click="isExpanded=!isExpanded" class="py-4">
-              <p class="text-truncate ma-0">
-                <v-icon color="yellow darken-1" class="pr-1 pl-2">mdi-flag-variant</v-icon>
-                {{task.title}}
-              </p>
+            <v-expansion-panel-header @click="isExpanded=!isExpanded">
+              <v-row align="center">
+                <v-col style="max-width:40px">
+                  <v-icon color="yellow darken-1" class="pr-1 pl-2">mdi-flag-variant</v-icon>
+                </v-col>
+                <v-col>{{task.title}}</v-col>
+              </v-row>
             </v-expansion-panel-header>
 
             <v-expansion-panel-content>
               <v-container>
-                <v-row justify="space-between" class="pt-2" no-gutters>
-                  <!-- date picker -->
-                  <v-col cols="12" sm="4">
-                    <v-menu
-                      v-model="pickermenu"
-                      :close-on-content-click="true"
-                      :nudge-right="40"
-                      transition="scale-transition"
-                      offset-y
-                      min-width="290px"
-                    >
-                      <template v-slot:activator="{ on }">
-                        <v-text-field
-                          dense
-                          title="Choose a new due date"
-                          :value="task.deadline.toLocaleDateString()"
-                          label="Due by:"
-                          prepend-icon="event"
-                          readonly
-                          v-on="on"
-                        ></v-text-field>
-                      </template>
-                      <v-date-picker no-title v-model="pickerDeadline" @input="pickermenu= false"></v-date-picker>
-                    </v-menu>
-                  </v-col>
-                  <!-- /date picker -->
-
-                  <!-- person picker -->
-                  <v-col cols="12" sm="5">
-                    <v-select
-                      dense
-                      prepend-icon="account_circle"
-                      :items="teamMembers"
-                      label="Assigned to:"
-                      v-model="person"
-                    ></v-select>
-                  </v-col>
-                  <!-- /person picker -->
-                </v-row>
-
                 <!-- task origin -->
                 <span class="boxHeader">Originated from:</span>
 
@@ -86,6 +48,48 @@
 
                 <!-- /comments -->
                 <AddComment :taskId="task.id" />
+
+                <v-row justify="space-between" class="pt-5" no-gutters>
+                  <!-- date picker -->
+                  <v-col cols="12" sm="4">
+                    <v-menu
+                      v-model="pickermenu"
+                      :close-on-content-click="true"
+                      :nudge-right="40"
+                      transition="scale-transition"
+                      offset-y
+                      min-width="290px"
+                    >
+                      <template v-slot:activator="{ on }">
+                        <v-text-field
+                          clearable
+                          @click:clear="deleteDeadline"
+                          dense
+                          :value="task.deadline ? new Date(task.deadline).toLocaleDateString() : ''"
+                          :label="pickerLabel"
+                          prepend-icon="event"
+                          readonly
+                          v-on="on"
+                        ></v-text-field>
+                        <!-- <v-btn x-small text fab><v-icon>mdi-close-circle</v-icon></v-btn> -->
+                      </template>
+                      <v-date-picker no-title v-model="pickerDeadline" @input="pickermenu= false"></v-date-picker>
+                    </v-menu>
+                  </v-col>
+                  <!-- /date picker -->
+
+                  <!-- person picker -->
+                  <v-col cols="12" sm="5">
+                    <v-select
+                      dense
+                      prepend-icon="account_circle"
+                      :items="teamMembers"
+                      label="Assigned to:"
+                      v-model="person"
+                    ></v-select>
+                  </v-col>
+                  <!-- /person picker -->
+                </v-row>
               </v-container>
             </v-expansion-panel-content>
           </v-expansion-panel>
@@ -158,19 +162,18 @@ export default {
     closeTask() {
       this.$store.dispatch("changeTask", ["closed", this.task.id]);
       this.$store.dispatch("showSnack", [true, "taskClosed"]);
+    },
+    deleteDeadline() {
+      this.$store.dispatch("changeDueDate", ["", this.task.id]);
     }
   },
   computed: {
     ...mapState(["admins", "tasks", "teamMembers"]),
-    pickerDeadline: {
-      get() {
-        // for v-date-picker to work, we need to turn the deadline into a cropped ISOString
-        return this.task.deadline.toISOString().substr(0, 10);
-      },
-      // v-date-picker returns a cropped ISOString, so we need to turn that back into a new Date object when updating the task deadline
-      set(value) {
-        this.$store.dispatch("changeDueDate", [new Date(value), this.task.id]);
+    pickerLabel() {
+      if (this.task.deadline === "") {
+        return "Set a due date:";
       }
+      return "Due by:";
     },
     person: {
       // getting task.delegatedTo from Vuex, and sending new value to Vuex upon change
@@ -179,6 +182,19 @@ export default {
       },
       set(value) {
         this.$store.dispatch("changePerson", [value, this.task.id]);
+      }
+    },
+
+    pickerDeadline: {
+      get() {
+        if (this.task.deadline === "") {
+          return new Date().toISOString().substr(0, 10);
+        } else {
+          return this.task.deadline.toISOString().substr(0, 10);
+        }
+      },
+      set(value) {
+        this.$store.dispatch("changeDueDate", [new Date(value), this.task.id]);
       }
     }
   }

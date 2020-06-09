@@ -116,7 +116,7 @@ mode:"taskboard"
   padding-right: 24px;
   font-weight: 500;
   min-height: 36px !important;
-  height: 36px;
+  /* height: 36px; */
 }
 
 .v-btn {
