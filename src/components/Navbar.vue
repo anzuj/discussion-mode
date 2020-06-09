@@ -79,18 +79,14 @@ export default {
 </script>
 
 <style>
-
-.v-navigation-drawer__border{
- display: none;
-}
-.v-list-item__title {
+.v-navigation-drawer .v-list-item__title {
   font-weight: 400 !important;
   font-size: 1.1rem !important;
   font-family: "Raleway", sans-serif;
   color: rgb(255, 255, 255);
 }
 
-.v-list-item__icon i{
+.v-navigation-drawer  .v-list-item__icon i{
   color: rgb(206, 169, 188) !important;
 }
 /* .v-list-item--active .v-list-item__title{

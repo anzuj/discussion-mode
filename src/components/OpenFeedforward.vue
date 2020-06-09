@@ -22,7 +22,7 @@
       <v-col style="max-width:40px">
 
   
-        <v-tooltip bottom light color="grey" open-delay="1000">
+        <v-tooltip bottom color="grey lighten-3" open-delay="1000">
       <template v-slot:activator="{ on }">
           <v-btn
       v-on="on"
@@ -35,10 +35,10 @@
           <v-icon color="green">mdi-check</v-icon>
         </v-btn>
       </template>
-      <span>Mark Feedforward as discussed</span>
+      <span class="grey--text text--darken-3">Mark Feedforward as discussed</span>
     </v-tooltip>
      
- <v-tooltip bottom color="grey" open-delay="1000">
+ <v-tooltip bottom color="grey lighten-3" open-delay="1000">
       <template v-slot:activator="{ on }">
         <v-btn
         :disabled="showTask"
@@ -52,7 +52,7 @@
           <v-icon color="yellow darken-1" class="mr-1">mdi-flag-variant</v-icon>
         </v-btn>
          </template>
-      <span>Create a task from Feedforward</span>
+      <span class="grey--text text--darken-3">Create a task from Feedforward</span>
     </v-tooltip>
     
        </v-col>

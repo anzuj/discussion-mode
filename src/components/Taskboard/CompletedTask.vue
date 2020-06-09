@@ -79,9 +79,21 @@ export default {
 
 .v-expansion-panel-header {
   background: #fbfff7;
+  transition: background 0.2s ease-in;
 }
-
 .v-expansion-panel-header:hover {
   background: #f4ffe5;
+  transition: background 0.2s ease-in;
 }
+
+.v-expansion-panel, .v-expansion-panel-header, .v-expansion-panel--active {
+  border-radius: 18px !important
+}
+
+.v-expansion-panel-header--active, .v-expansion-panel-header--active:hover {
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+} 
+
+
 </style>

@@ -119,5 +119,10 @@ mode:"taskboard"
 .v-btn {
   min-width: 0 !important;
 }
+
+.v-expansion-panel, .v-expansion-panel-header, .v-expansion-panel--active {
+  border-radius: 18px !important
+}
+
 </style>
 

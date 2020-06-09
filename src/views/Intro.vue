@@ -19,7 +19,7 @@
           @end="drag = false"
         >
           <transition-group type="transition" :name="!drag ? 'flip-list' : null">
-            <v-card max-width="800" class="mb-1" v-for="element in surveyData" :key="element.theme" color="lightpink lighten-1">
+            <v-card max-width="800" class="mb-1 pl-1 arrangeCard" v-for="element in surveyData" :key="element.theme" color="lightpink lighten-1">
               <v-row class="list-group-item" no-gutters>
                 <v-col class="d-none d-md-flex py-2 tinted" cols="3">
                   <v-icon>drag_indicator</v-icon>
@@ -101,7 +101,9 @@ export default {
   border-right: 1px rgb(223, 204, 204) solid;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  /* background: rgb(215,122,156);
-background: linear-gradient(90deg, rgb(190, 179, 183) 0%, rgb(151, 141, 145) 100%); */
+}
+
+.arrangeCard{
+  border-radius: 18px !important;
 }
 </style>

@@ -16,10 +16,12 @@
       </v-col>
 
       <v-col cols="1" style="max-width:40px">
+         <v-tooltip bottom color="grey lighten-3" open-delay="1000">
+      <template v-slot:activator="{ on }">
         <v-btn
           aria-label="Add comment"
           @click="addComment"
-          title="Add comment"
+             v-on="on"
           icon
           text
           color="primary"
@@ -27,6 +29,9 @@
         >
           <v-icon>mdi-send</v-icon>
         </v-btn>
+                 </template>
+      <span class="grey--text text--darken-3">Add comment</span>
+    </v-tooltip>
       </v-col>
     </v-row>
   </v-card>

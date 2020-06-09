@@ -4,9 +4,9 @@
           :timeout="1500"
           top
           absolute
-          :color="snackbar[mode].color" 
+          color="grey darken-2" 
         >
-        {{ snackbar[mode].text }}
+      {{ snackbar[mode].text }}
         <!-- <slot></slot> -->
         </v-snackbar>
 </template>
@@ -22,11 +22,11 @@ snackbar:
     },
         ffOpened: {
         text: "Feedforward reopened",
-        color: "grey"
+        color: "#F1F1F1"
     },
         ffEscalated: {
         text: "Feedforward sent to review by management",
-        color: "orange"
+        color: "#E5A213"
     },
     taskClosed: {
         text: "Task closed",
@@ -34,11 +34,11 @@ snackbar:
     },
         taskCreated: {
         text: "Task created",
-        color: "yellow"
+        color: "#F6DD0D"
     },
        taskDelegated: {
         text: "Task delegated to management",
-        color: "orange"
+        color: "#E5A213"
     }
     }
 

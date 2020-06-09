@@ -40,11 +40,11 @@
           <div
             v-if="openFeedforwards(`${question.theme}`).length===0"
             align="center"
-            class="ma-6 grey--text font-weight-light bounceIn"
+            class="ma-6 grey--text font-weight-light "
           >
             All Feedforwards discussed, click "Next" to proceed
             <br />
-            <v-icon class="display-2" color="grey lighten-1">mdi-thumb-up-outline</v-icon>
+            <v-icon class="bounceIn display-3" color="grey lighten-1">mdi-thumb-up-outline</v-icon>
           </div>
         </v-container>
       </v-card>
@@ -67,7 +67,7 @@
               justify="center"
             >
               <v-col cols="11">
-                <v-card>
+                <v-card class="ff">
                   <v-container class="font-italic">
                     <p
                       class="body-2 grey--text font-weight-light mb-0 mt-1"
@@ -165,6 +165,10 @@ export default {
 
 <style>
 
+.ff{
+  border-radius: 18px !important;
+}
+
 .v-tooltip{
   color: black !important;
 }
@@ -173,4 +177,55 @@ export default {
   font-size: 28px;
 }
 
+@keyframes bounceIn {
+  from,
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  20% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  40% {
+    -webkit-transform: scale3d(0.9, 0.9, 0.9);
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.03, 1.03, 1.03);
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  80% {
+    -webkit-transform: scale3d(0.97, 0.97, 0.97);
+    transform: scale3d(0.97, 0.97, 0.97);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.bounceIn {
+  -webkit-animation-duration: 0.75s;
+  animation-duration: 0.75s;
+  -webkit-animation-name: bounceIn;
+  animation-name: bounceIn;
+}
 </style>

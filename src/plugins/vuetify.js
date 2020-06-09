@@ -14,8 +14,8 @@ export default new Vuetify({
                 // From teambaromerter
                 primary: '#A6617D',
                 lightpink: '#FEFBFC',
-                secondary: '#A27B92',
-                accent: '#8278AF',
+                secondary: '#B6B4B5',
+                accent: '#BCAAB4',
                 error: '#F44336',
                 info: '#FF9800',
                 success: '#8BC34A',
