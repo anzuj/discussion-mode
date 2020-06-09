@@ -13,7 +13,7 @@
       >Back</v-btn>
 
       <!-- <div class="questionicon"><v-icon color="lightpink darken-1">mdi-comment-question-outline</v-icon></div> -->
-      <div align="center" class="question px-2">{{ question.question }}</div>
+      <div align="center" class="px-2" :class="{'questionbig': $vuetify.breakpoint.smAndUp, 'question':$vuetify.breakpoint.xs }">{{ question.question }}</div>
 
       <v-btn
         depressed
@@ -183,8 +183,11 @@ export default {
   color: black !important;
 }
 
-.question {
+.questionbig {
   font-size: 28px;
+}
+.question {
+  font-size: 18px;
 }
 
 @keyframes bounceIn {

@@ -46,15 +46,15 @@
           <v-list-item-icon>
             <v-icon>mdi-login-variant</v-icon>
           </v-list-item-icon>
-          <v-list-item-title>Intro</v-list-item-title>
+          <v-list-item-title>Select order</v-list-item-title>
         </v-list-item>
 
-                 <v-list-item router to="/help">
+                 <!-- <v-list-item router to="/help">
           <v-list-item-icon>
             <v-icon>mdi-login-variant</v-icon>
           </v-list-item-icon>
           <v-list-item-title>Help</v-list-item-title>
-        </v-list-item>
+        </v-list-item> -->
 
       </v-list>
 
