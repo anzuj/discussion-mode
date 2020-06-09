@@ -43,6 +43,8 @@
             >
               <template v-slot:activator="{ on }">
                 <v-text-field
+                clearable
+                @click:clear="isDateChosen = false"
                   dense
                   title="Choose a due date"
                   :value="displayDate"
