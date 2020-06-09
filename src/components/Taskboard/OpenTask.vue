@@ -2,7 +2,7 @@
   <div>
     <v-row no-gutters class="taskHeader mb-1 d-flex flex-nowrap" justify="center">
       <v-col cols="11">
-        <v-expansion-panels hover>
+        <v-expansion-panels hover popout>
           <v-expansion-panel>
             <v-expansion-panel-header @click="isExpanded=!isExpanded">
               <p class="text-truncate ma-0">
@@ -12,7 +12,7 @@
             </v-expansion-panel-header>
 
             <v-expansion-panel-content>
-              <v-container >
+              <v-container>
                 <v-row justify="space-between" class="pt-2" no-gutters>
                   <!-- date picker -->
                   <v-col cols="12" sm="4">
@@ -94,41 +94,45 @@
 
       <!-- btns -->
       <v-col style="max-width:40px" v-if="mode ==='taskboard'">
-             <v-tooltip bottom color="grey lighten-3" open-delay="1000">
-          <template v-slot:activator="{ on }">
-        <v-btn
-         aria-label="Mark task as completed"
-            v-on="on"
-          @click="closeTask"
-          class="closeBtn mb-1 ml-1"
-          width="36px"
-          v-ripple="{ class: 'success--text' }"
-        >
-          <v-icon color="green">mdi-check</v-icon>
-        </v-btn>
-                       </template>
-          <span class="grey--text text--darken-3">Mark task as completed</span>
-        </v-tooltip>
-        
-           <v-tooltip bottom color="grey lighten-3" open-delay="1000">
+        <v-tooltip bottom color="grey lighten-3" open-delay="1000">
           <template v-slot:activator="{ on }">
             <v-btn
-            @click="dialog=true"
+              color="transparent"
+              small
+              depressed
+              fab
+              aria-label="Mark task as completed"
+              v-on="on"
+              @click="closeTask"
+              class="closeBtn mb-1 ml-1"
+              v-ripple="{ class: 'success--text' }"
+            >
+              <v-icon color="green">mdi-check</v-icon>
+            </v-btn>
+          </template>
+          <span class="grey--text text--darken-3">Mark task as completed</span>
+        </v-tooltip>
+
+        <v-tooltip bottom color="grey lighten-3" open-delay="1000">
+          <template v-slot:activator="{ on }">
+            <v-btn
+              color="transparent"
+              small
+              depressed
+              fab
+              @click="dialog=true"
               v-show="isExpanded"
               v-on="on"
-               aria-label="Move task up to admins"
+              aria-label="Move task up to admins"
               v-ripple="{ class: 'orange--text' }"
               class="moveUpBtn ml-1"
-              width="36px"
             >
               <v-icon color="orange">mdi-account-arrow-right</v-icon>
             </v-btn>
-                  </template>
+          </template>
           <span class="grey--text text--darken-3">Move task up to admins</span>
         </v-tooltip>
-            <EscalateDialog :task="task" :dialog="dialog" @dialogStatus="dialog = $event"/>
-
-  
+        <EscalateDialog :task="task" :dialog="dialog" @dialogStatus="dialog = $event" />
       </v-col>
       <!-- btns-->
     </v-row>
@@ -143,16 +147,14 @@ export default {
   props: ["task", "mode"],
   components: {
     AddComment: () => import("../AddComment"),
-    EscalateDialog: () => import("../Taskboard/EscalateDialog"),
+    EscalateDialog: () => import("../Taskboard/EscalateDialog")
   },
   data: () => ({
     isExpanded: false, //expansion panel state
     dialog: false, //move up dialog
-    pickermenu: false, //date picker visibility state
-
+    pickermenu: false //date picker visibility state
   }),
   methods: {
-
     closeTask() {
       this.$store.dispatch("changeTask", ["closed", this.task.id]);
       this.$store.dispatch("showSnack", [true, "taskClosed"]);
@@ -190,7 +192,7 @@ export default {
   word-wrap: break-word;
 }
 .v-expansion-panel-header {
-  background: rgba(250,249,226,0.5);
+  background: rgba(250, 249, 226, 0.5);
   transition: background 0.2s ease-in;
 }
 
@@ -199,20 +201,28 @@ export default {
   transition: background 0.2s ease-in;
 }
 
-.v-expansion-panel-content{
-background: rgb(250,249,226);
-background: linear-gradient(180deg, rgba(250,249,226,0.1) 0%, rgba(255,255,255,1) 100%);
+.v-expansion-panel-content {
+  background: rgb(250, 249, 226);
+  background: linear-gradient(
+    180deg,
+    rgba(250, 249, 226, 0.1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
   border-bottom-left-radius: 18px;
-   border-bottom-right-radius: 18px;
+  border-bottom-right-radius: 18px;
 }
-.v-expansion-panel, .v-expansion-panel-header, .v-expansion-panel--active {
-  border-radius: 18px !important
+.v-expansion-panel,
+.v-expansion-panel-header,
+.v-expansion-panel--active {
+  border-radius: 18px !important;
 }
 
-.v-expansion-panel-header--active, .v-expansion-panel-header--active:hover {
+.v-expansion-panel-header--active,
+.v-expansion-panel-header--active:hover {
   border-bottom-left-radius: 0px !important;
   border-bottom-right-radius: 0px !important;
-} 
+  transition: border-radius 0.2s ease-in-out;
+}
 
 .boxHeader {
   position: relative;

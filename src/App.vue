@@ -5,17 +5,7 @@
 
 <!-- <div class="bg"> -->
 
-<!-- 
-<svg class="tiny" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 320"><path fill="#A6617D" fill-opacity="1" d="M0,32L60,42.7C120,53,240,75,360,112C480,149,600,203,720,208C840,213,960,171,1080,149.3C1200,128,1320,128,1380,128L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
-</svg> -->
-
  <svg  class="absolute" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#CFB4BF" fill-opacity="0.10" d="M0,64L80,74.7C160,85,320,107,480,149.3C640,192,800,256,960,277.3C1120,299,1280,277,1360,266.7L1440,256L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
-
-<!--
-<svg class="absolute" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#CFB4BF" fill-opacity="0.1" d="M0,288L120,272C240,256,480,224,720,224C960,224,1200,256,1320,272L1440,288L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path></svg> -->
-
-
-
 
 <svg class='absolute' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#E3E1E1" fill-opacity="0.3" d="M0,224L120,224C240,224,480,224,720,202.7C960,181,1200,139,1320,117.3L1440,96L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path></svg> 
 <!-- </div> -->
@@ -112,10 +102,10 @@ background: linear-gradient(180deg, rgba(221, 221, 221, 0.2) 0%, rgba(136,37,73,
 
 }
 
-.v-btn:focus::before {
+/* .v-btn:focus::before {
   background-color: rgba(138, 138, 218, 0.5);
   border: 1px solid rgb(19, 76, 184);
-}
+} */
 
 .fade-in {
   opacity: 1;

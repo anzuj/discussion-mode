@@ -87,12 +87,13 @@ export default {
 }
 
 .v-expansion-panel, .v-expansion-panel-header, .v-expansion-panel--active {
-  border-radius: 18px !important
+  border-radius: 18px !important;
 }
 
 .v-expansion-panel-header--active, .v-expansion-panel-header--active:hover {
   border-bottom-left-radius: 0px !important;
   border-bottom-right-radius: 0px !important;
+  transition: border-radius 0.15s ease-in;
 } 
 
 

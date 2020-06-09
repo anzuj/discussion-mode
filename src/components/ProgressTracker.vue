@@ -133,7 +133,6 @@ export default {
 .moveUpBtn::before {
   background-color: transparent;
 }
-
 .closeBtn i:hover,
 .taskBtn i:hover,
 .reopenBtn i:hover,
