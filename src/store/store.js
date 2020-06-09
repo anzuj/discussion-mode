@@ -200,7 +200,8 @@ export const store = new Vuex.Store({
             "Manila Luzon",
             "Alexis Mateo",
             "Jinkx Monsoon",
-            "Nico Monsoon"
+            "Nico Monsoon",
+            "Other..."
         ],
         admins: [
             "Admin 1",
