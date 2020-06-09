@@ -1,7 +1,9 @@
 <template>
   <div class="fade-in">
-     <div class="text-center display-1 font-weight-light py-6">Taskboard</div>
-    <v-row justify="center">
+
+<div class="text-center display-1 font-weight-light py-6">Taskboard</div>
+    
+    <v-row justify="center" no-gutters>
 
      
       <!-- container row -->
@@ -62,6 +64,7 @@
             >
               No completed tasks
             </div>
+            
           </v-container>
         </v-card>
         <!-- /COMPLETED CARD -->

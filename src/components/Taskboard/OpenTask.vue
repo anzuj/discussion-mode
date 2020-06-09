@@ -4,7 +4,7 @@
       <v-col cols="11">
         <v-expansion-panels hover popout>
           <v-expansion-panel>
-            <v-expansion-panel-header @click="isExpanded=!isExpanded">
+            <v-expansion-panel-header @click="isExpanded=!isExpanded" class="py-4">
               <p class="text-truncate ma-0">
                 <v-icon color="yellow darken-1" class="pr-1 pl-2">mdi-flag-variant</v-icon>
                 {{task.title}}
@@ -125,7 +125,7 @@
               v-on="on"
               aria-label="Move task up to admins"
               v-ripple="{ class: 'orange--text' }"
-              class="moveUpBtn ml-1"
+              class="moveUpBtn fade-in ml-1"
             >
               <v-icon color="orange">mdi-account-arrow-right</v-icon>
             </v-btn>

@@ -3,8 +3,8 @@
     <v-col class="px-4">
       <v-expansion-panels hover popout>
         <v-expansion-panel>
-          <v-expansion-panel-header class="py-5">
-            <p class="text-truncate ma-0">
+          <v-expansion-panel-header class="py-4">
+            <p class="text-truncate pa-0 ma-0">
               <v-icon color="green" class="px-1">mdi-check</v-icon>
               {{task.title}}
             </p>
