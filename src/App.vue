@@ -77,7 +77,8 @@ export default {
 #app {
   font-family: "Roboto", sans-serif;
 
-background: linear-gradient(180deg, rgba(214, 188, 188, 0.11) 0%, rgba(136,37,73,0) 100%);
+background: linear-gradient(180deg, rgba(250,247,247,1) 0%, rgba(255,255,255,1) 100%) center center fixed;
+background-size: cover
   /* background: rgb(200,129,155); */
   /* background: radial-gradient(circle, rgba(200,129,155,1) 0%, rgba(136,37,73,1) 100%); */
   /* background-image: linear-gradient(
