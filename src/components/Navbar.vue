@@ -3,7 +3,6 @@
     <v-app-bar app color="transparent" flat>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-spacer></v-spacer>
-      <!-- <v-toolbar-title class="text-uppercase">{{title}}</v-toolbar-title> -->
     </v-app-bar>
 
     <v-navigation-drawer disable-resize-watcher v-model="drawer" app color="primary darken-2" 
@@ -66,12 +65,6 @@
 export default {
   components: {},
   name: "Navbar",
-  computed: {
-    title: function () {
-      return this.$route.meta.title + (this.$route.params.id ? this.$route.params.id : '')
-    }
-  },
-
   data: () => ({
     drawer: false,
   })
@@ -84,15 +77,11 @@ export default {
   font-size: 1.1rem !important;
   font-family: "Raleway", sans-serif;
   color: rgb(255, 255, 255);
+  line-height: 1.2rem;
 }
 
 .v-navigation-drawer  .v-list-item__icon i{
   color: rgb(206, 169, 188) !important;
 }
-/* .v-list-item--active .v-list-item__title{
-  color: blue !important;
-}
-.v-list-item--active {
-  background: rgba(0, 0, 255, 0) !important;
-} */
+
 </style>
